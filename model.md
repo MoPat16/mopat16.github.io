@@ -1,8 +1,5 @@
-<HTML>
-<TITLE>
 GEOG5995 Assessment 1
-</TITLE>
-<BODY>
+
 Model code:
 
 import matplotlib
@@ -133,6 +130,3 @@ model_menu = tkinter.Menu(menu_bar)
 menu_bar.add_cascade(label="Model", menu=model_menu)
 model_menu.add_command(label="Run model", command=run)
 tkinter.mainloop() # Wait for interactions.
-
-</BODY>
-</HTML>
