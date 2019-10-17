@@ -44,8 +44,8 @@ Geog5995 Assessment 1
 <body style="background-color:purple;">
 <ul>
   <li><a href="https://mopat16.github.io/index.html">Home</a></li>
-  <li><a href="news.asp">Assessment 1</a></li>
-  <li><a href="contact.asp">Contact</a></li>
+  <li><a href="https://mopat16.github.io/ASS1model.html">Assessment 1</a></li>
+  <li><a href="https://github.com/MoPat16">Github</a></li>
   <li><a href="about.asp">About</a></li>
 </ul>
 
@@ -86,13 +86,14 @@ Geog5995 Assessment 1
 
 <h4> Define </h4>
 
-num_of_agents = 10
-num_of_iterations = 100
-agents = []
-neighbourhood = 20
-
-fig = matplotlib.pyplot.figure(figsize=(7, 7))
-ax = fig.add_axes([0, 0, 1, 1])
+<ul style="list-style-type:none;">
+<li>num_of_agents = 10</li>
+<li>num_of_iterations = 100</li>
+<li>agents = []</li>
+<li>neighbourhood = 20</li>
+<br>
+<li>fig = matplotlib.pyplot.figure(figsize=(7, 7))<li>
+<li>ax = fig.add_axes([0, 0, 1, 1])</li>
 
 </div>
 
@@ -100,19 +101,19 @@ ax = fig.add_axes([0, 0, 1, 1])
 
 <h4>Loading the environment</h4>         
 
-environment = []
-
-import csv
-f = open('data.txt', newline='')
-reader = csv.reader(f, quoting=csv.QUOTE_NONNUMERIC)
-for row in reader: # A list of rows
-    rowlist = []
-    for value in row:# A list of value
-        rowlist.append(value)
-    environment.append(rowlist)
-#    print(value)
-         # Floats
-f.close()
+<ul style="list-style-type:none;">
+<li>environment = []</li>
+<br>
+<li>import csv<li>
+<li>f = open('data.txt', newline='')</li>
+<li>reader = csv.reader(f, quoting=csv.QUOTE_NONNUMERIC)</li>
+<li>for row in reader: # A list of rows</li>
+    <li>rowlist = []</li>
+    <li>for value in row:# A list of value</li>
+        <li>rowlist.append(value)</li>
+    <li>environment.append(rowlist)</li>
+<br>
+<li>f.close()</li>
 
 
 </div>
