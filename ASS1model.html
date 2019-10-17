@@ -1,5 +1,45 @@
 <html>
+<head>
+<style>
+<div>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
 
+li {
+  float: left;
+}
+
+li {
+  float: left;
+  border-right:1px solid #bbb;
+}
+
+li:last-child {
+  border-right: none;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
+<!-- Place this tag in your head or just before your close body tag. -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<div>
+</style>
 </head>
 <TITLE>
 Geog5995 Assessment 1
@@ -25,172 +65,11 @@ Geog5995 Assessment 1
 
 <div>
 
-<h4>Model code:</h4>
+<h3> Press download for model code </h3>
+<!-- Place this tag where you want the button to render. -->
+<a class="github-button" href="https://github.com/mopat16/Agent-based-model-/archive/master.zip" data-color-scheme="no-preference: dark; light: light; dark: dark;" data-icon="octicon-cloud-download" data-size="large" aria-label="Download mopat16/Agent-based-model- on GitHub">Download</a>
 
 </div>
 
-<div>
-
-<h4> Importing packages</h4>
-
-<ul style="list-style-type:none;">
-<li>import matplotlib</li>
-<li>matplotlib.use('TkAgg')</li>
- <br>
-<li>import tkinter</li>
-<li>import random</li>
-<li>import operator</li>
-<li>import matplotlib.pyplot</li>
-<li>import matplotlib.animation</li> 
-<li>import agentframework</li>
-<li>import requests</li>
-<li>import bs4</li>
-</ul>
-</div>
-
-<div>
-
-<h4> Define </h4>
-
-<ul style="list-style-type:none;">
-<li>num_of_agents = 10</li>
-<li>num_of_iterations = 100</li>
-<li>agents = []</li>
-<li>neighbourhood = 20</li>
-<br>
-<li>fig = matplotlib.pyplot.figure(figsize=(7, 7))<li>
-<li>ax = fig.add_axes([0, 0, 1, 1])</li>
-
-</div>
-
-<div>
-
-<h4>Loading the environment</h4>         
-
-<ul style="list-style-type:none;">
-<li>environment = []</li>
-<br>
-<li>import csv<li>
-<li>f = open('data.txt', newline='')</li>
-<li>reader = csv.reader(f, quoting=csv.QUOTE_NONNUMERIC)</li>
-<li>for row in reader: # A list of rows</li>
-    <li>rowlist = []</li>
-    <li>for value in row:# A list of value</li>
-        <li>rowlist.append(value)</li>
-    <li>environment.append(rowlist)</li>
-<br>
-<li>f.close()</li>
-
-
-</div>
-
-<div>
-
-<h4>Getting coordinates from web</h4>         
-
-r = requests.get('http://www.geog.leeds.ac.uk/courses/computing/practicals/python/agent-framework/part9/data.html')
-content = r.text
-soup = bs4.BeautifulSoup(content, 'html.parser')
-td_ys = soup.find_all(attrs={"class" : "y"})
-td_xs = soup.find_all(attrs={"class" : "x"})
-print(td_ys)
-print(td_xs)
-
-#ax.set_autoscale_on(False)
-
-</div>
-
-<div>
-
-<h4>Make the agents</h4>
-
-for i in range(num_of_agents):
-     y = int(td_ys[i].text)
-     x = int(td_xs[i].text)
-     agents.append(agentframework.Agent(environment, agents, y, x))
-
-carry_on = True	
-	
-def update(frame_number):
-    global carry_on
-    
-    fig.clear() 
-    
-    matplotlib.pyplot.xlim(0, 299)
-    matplotlib.pyplot.ylim(0, 299)
-    
-    # plto the environemnt
-    matplotlib.pyplot.imshow(environment)
-
-
-    random.shuffle(agents)
-
-</div>
-
-<div>
-    
-<h4>Move the agents and eat and share</h4>
-
-    for i in range(num_of_agents):
-        agents[i].move()
-        agents[i].eat()
-        agents[i].share_with_neighbours(neighbourhood)
-      
-    
-    if random.random() < 0.01:
-        carry_on = False
-        print("random stopping condition")
-
-</div>
-
-<div>
-    
-<h4>Plot agents on the environemnt</h4>
-
-    for i in range(num_of_agents):
-        matplotlib.pyplot.scatter(agents[i].get_x(),agents[i].get_y(), color = 'black')
-		
-def gen_function(b = [0]):
-    a = 0
-    global carry_on #Not actually needed as we're not assigning, but clearer
-    while (a < 100) & (carry_on) :
-        yield a			# Returns control and waits next call.
-        a = a + 1
-
-</div>
-
-<div>
-
-<h4>Animation</h4>
-
-#animation = matplotlib.animation.FuncAnimation(fig, update, interval=1, repeat=False, frames=10)
-#animation = matplotlib.animation.FuncAnimation(fig, update, frames=num_of_iterations, repeat=False)
-
-root = tkinter.Tk()
-root.wm_title("Model")
-canvas = matplotlib.backends.backend_tkagg.FigureCanvasTkAgg(fig, master=root)
-canvas._tkcanvas.pack(side=tkinter.TOP, fill=tkinter.BOTH, expand=1)
-
-def run():
-    animation = matplotlib.animation.FuncAnimation(fig, update, frames=gen_function, repeat=False)
-    canvas.show()
-
-
-	
-</div>
-
-<div>
-
-<h4>Just showing menu elements</h4>
-
-menu_bar = tkinter.Menu(root)
-root.config(menu=menu_bar)
-model_menu = tkinter.Menu(menu_bar)
-menu_bar.add_cascade(label="Model", menu=model_menu)
-model_menu.add_command(label="Run model", command=run)
-tkinter.mainloop() # Wait for interactions.
-
-</div>
-
-<body>
+</body>
 </html>
