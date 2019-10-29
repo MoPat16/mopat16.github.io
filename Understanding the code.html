@@ -54,7 +54,86 @@ Understanding the code
 
 </div> 
 
+<div>
 
+<h1 style="color: white;"> Understanding the code</h1>
+
+</div>
+
+<div> 
+
+<h6 style="color: white;"> Background:</h6> 
+
+<p style="color: white;"> The model encompasses a simple Agent Based Model (ABM). The model includes only one type of agent. In this example the created agent behaves similar to that of a sheep. The sheep move around in the created environment, eat grass and looking around and share information with other sheep within the same environment.</p>  
+
+<div/>
+
+<div>
+
+<h6 style="color: white;"> The agents:</h6> 
+
+<p style="color: white;"> In this example the following code is the main foundation for the sheep:</p>
+
+<ul style="color: white;"> 
+<li> num_of_agents = 10</li>
+<li> num_of_iterations = 100</li>
+<li> neighbourhood = 20</li>
+</ul>
+
+<p style="color: white;"> The ‘num_of_agents’ refers to how many sheep are going to be living within the environment. The default setting is 10 and can be changed to any number. The ‘num_of_iterations’ refers to how long the sheep are going to be moving, eating and sharing iterations. This can also be changed to any number and any number of iterations can be labelled as a period of time. For example, a 100 iterations could be one day for the sheep. ‘The neighbourhood’ refers to the distance where the sheep can share information with each other.</p>
+
+<p style="color: white;"> The code below defines where the agents (‘sheep’) will start at the beginning of the day for example.</p>
+
+<p style="color: white;"> for i in range(num_of_agents):
+     y = int(td_ys[i].text)
+     x = int(td_xs[i].text)
+     agents.append(Agentframework.Agent(environment, agents, y, x))</p>
+
+<p style="color: white;"> The ‘def’ functions below allow for the sheep to move, eat and share. This is dependent on the random numbers generated for the movement of the sheep, the proximity to each other for eating and sharing information. For more details of the code behind these functions please see the agentframework.</p>
+
+<p style="color: white;"> for i in range(num_of_agents):
+        agents[i].move()
+        agents[i].eat()
+        agents[i].share_with_neighbours(neighbourhood) </p>
+
+<p style="color: white;"> It was also eluded to earlier that the sheep would stop any action ‘by the end of the day’ (referring to the number of iterations). However, the sheep would also stop under the random stopping condition. The code below suggests that if a random number is less than 0.01 the sheep would cease to carry out any more action.</p>
+
+<p style="color: white;"> if random.random() < 0.01:
+        carry_on = False
+        print("random stopping condition")</p>
+
+<p style="color: white;"> To see this in action the module ‘matplotlib’ was used to create an animation where the sheep would move.</p>
+
+<img src="Libraries/Documents/animation.jpg"/>
+
+</div>
+
+<div>
+
+<h6 style="color: white;"> The environment:</h6> 
+
+<p style="color: white;"> The environment that the sheep are free to move, eat and share information in was imported in through a csv file. In this example, the file was saved as ‘data.txt.</p>
+
+</div>
+
+<div>
+
+<h6 style="color: white;"> Getting co-ordinates from the web:</h6>
+
+<p style="color: white;"> The main reason why the sheep only move within the 100x100 parameter in the bottom right corner is because the x and y variables downloaded from the web were within that range.</p>
+
+</div>
+
+<div>
+
+<h6 style="color: white;"> Running the code:</h6>
+
+<p style="color: white;"> The instructions for running the code are available for download from the homepage. The main taking point from the code is that the model, the agentframework and the data must be within the same working directory. The number of agents, iterations, the size of the neighbourhood and even the extent of the movement of the sheep can be changed from the default values. The random stopping condition can be changed to a larger figure (which will therefore occur more often) or to a smaller figure (which will therefore occur less often). When the model is run a pop up window will be shown on the screen and a tab will be present for the animation to run with the label ‘run model’ (sometimes the window may need to be changed to full screen to see the animation).</p>
+
+</div>
+
+
+ 
 
 
 
