@@ -80,32 +80,32 @@ Understanding the code
 
 <p style="color: white;"> The ‘num_of_agents’ refers to how many sheep are going to be living within the environment. The default setting is 10 and can be changed to any number. The ‘num_of_iterations’ refers to how long the sheep are going to be moving, eating and sharing iterations. This can also be changed to any number and any number of iterations can be labelled as a period of time. For example, a 100 iterations could be one day for the sheep. ‘The neighbourhood’ refers to the distance where the sheep can share information with each other.</p>
 
-<p style="color: white;"> The code below defines where the agents (‘sheep’) will start at the beginning of the day for example:</p>
+<p style="color: white;"> <em>The code below defines where the agents (‘sheep’) will start at the beginning of the day for example:</p>
 
 <p style="color: white;"> for i in range(num_of_agents):
      y = int(td_ys[i].text)
      x = int(td_xs[i].text)
-     agents.append(Agentframework.Agent(environment, agents, y, x))</p>
+     agents.append(Agentframework.Agent(environment, agents, y, x))</em></p>
 
 <br>
 
 
-<p style="color: white;"> The ‘def’ functions below allow for the sheep to move, eat and share. This is dependent on the random numbers generated for the movement of the sheep, the proximity to each other for eating and sharing information. For more details of the code behind these functions please see the agentframework:</p>
+<p style="color: white;"> <em>The ‘def’ functions below allow for the sheep to move, eat and share. This is dependent on the random numbers generated for the movement of the sheep, the proximity to each other for eating and sharing information. For more details of the code behind these functions please see the agentframework:</p>
 
 <p style="color: white;"> for i in range(num_of_agents):
         agents[i].move()
         agents[i].eat()
-        agents[i].share_with_neighbours(neighbourhood) </p>
+        agents[i].share_with_neighbours(neighbourhood) </em></p>
 
 		
 <br>
 		
 		
-<p style="color: white;"> It was also eluded to earlier that the sheep would stop any action ‘by the end of the day’ (referring to the number of iterations). However, the sheep would also stop under the random stopping condition. The code below suggests that if a random number is less than 0.01 the sheep would cease to carry out any more action:</p>
+<p style="color: white;"> <em>It was also eluded to earlier that the sheep would stop any action ‘by the end of the day’ (referring to the number of iterations). However, the sheep would also stop under the random stopping condition. The code below suggests that if a random number is less than 0.01 the sheep would cease to carry out any more action:</p>
 
 <p style="color: white;"> if random.random() < 0.01:
         carry_on = False
-        print("random stopping condition")</p>
+        print("random stopping condition")</em></p>
 
 <br>
 	
